@@ -1,0 +1,183 @@
+/* Blog Navbar - Navigation spécialisée pour les pages d'articles */
+.blognav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--blognav-bg, #ffffff);
+  border-bottom: 1px solid var(--blognav-border, #e5e5e5);
+  z-index: 1000;
+  height: 70px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.blognav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 100%;
+}
+
+/* Section gauche - Bouton Retour */
+.blognav-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -1rem; /* Pousse le bouton encore plus à gauche */
+}
+
+.blognav-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: var(--blognav-text, #333333);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: 0; /* Assure que le bouton est bien à gauche */
+}
+
+.blognav-back-btn:hover {
+  background-color: var(--blognav-hover, rgba(0, 64, 255, 0.1));
+  color: var(--blognav-primary, #0040ff);
+  transform: translateX(-2px);
+}
+
+.blognav-back-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.blognav-back-btn:hover svg {
+  transform: translateX(-3px);
+}
+
+/* Section centre - Logo */
+.blognav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.blognav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.blognav-logo img {
+  height: 40px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.blognav-logo:hover img {
+  transform: scale(1.05);
+}
+
+/* Section droite - Bouton thème */
+.blognav-right {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  margin-right: -1rem !important; /* Pousse le bouton encore plus à droite */
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.blognav-theme-toggle {
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  color: #003ADD !important;
+  padding: 10px !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  margin-right: 0 !important;
+  z-index: 10 !important;
+}
+
+.blognav-theme-toggle:hover {
+  background-color: rgba(0, 58, 221, 0.1) !important;
+  color: #003ADD !important;
+  transform: translateY(-1px) !important;
+}
+
+.blognav-theme-toggle.dark {
+  background-color: rgba(0, 58, 221, 0.15) !important;
+  color: #003ADD !important;
+}
+
+.blognav-theme-toggle.dark:hover {
+  background-color: rgba(0, 58, 221, 0.25) !important;
+  color: #003ADD !important;
+}
+
+/* SVG Icon styles */
+.blognav .theme-icon {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* S'assurer que le bouton est toujours visible */
+.blognav-theme-toggle:focus {
+  outline: 2px solid var(--blognav-primary, #0040ff) !important;
+  outline-offset: 2px !important;
+}
+
+/* Support du mode sombre */
+[data-theme="dark"] .blognav {
+  --blognav-bg: #1a1a1a;
+  --blognav-border: #333333;
+  --blognav-text: #ffffff;
+  --blognav-hover: rgba(255, 255, 255, 0.1);
+  --blognav-primary: #4A90E2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .blognav-container {
+    padding: 0 1rem;
+  }
+  
+  .blognav-back-btn span {
+    display: none;
+  }
+  
+  .blognav-back-btn {
+    padding: 0.5rem;
+    min-width: 40px;
+    justify-content: center;
+  }
+  
+  .blognav-logo img {
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blognav {
+    height: 60px;
+  }
+  
+  .blognav-container {
+    padding: 0 0.5rem;
+  }
+  
+  .blognav-logo img {
+    height: 30px;
+  }
+}

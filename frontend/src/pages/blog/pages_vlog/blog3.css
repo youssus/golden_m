@@ -1,0 +1,303 @@
+/* Page Blog1 - "The Woman" - Version avec éléments rapprochés */
+.blog1-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding-top: 70px; /* Marge pour la navbar fixe */
+}
+
+/* Section header avec titre et image portrait - RAPPROCHÉS */
+.blog1-header-section {
+  margin: 2rem 0 3rem 0; /* Réduit de 4rem à 2rem (haut) et 6rem à 3rem (bas) */
+  padding: 0 2rem;
+}
+
+.header-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 0 !important; /* MODIFIÉ : Gap à zéro pour éliminer tout espace */
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.header-text {
+  flex: 1;
+  text-align: left;
+  margin-right: 0;
+  padding-right: 0;
+  margin-left: 150px; /* Décale le titre et la description vers la droite */
+}
+
+.main-title {
+  font-size: 4.2rem;
+  font-weight: bold;
+  margin-bottom: 2.4rem; /* Espace encore plus grand pour séparer le titre de la description */
+  margin-right: 0; /* AJOUTÉ : Supprime marge droite du titre */
+  color: #000000;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  line-height: 1;
+}
+
+.blue-text {
+  color: #1e40af;
+}
+
+.intro-text {
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 0;
+  max-width: 580px;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+}
+
+.header-image {
+  flex: none;
+  margin-left: 0;
+  margin-right: 100px; /* Ajoute un espace à droite de l'image */
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+}
+
+.portrait-image {
+  width: 350px;
+  height: 290px;
+  border-radius: 0;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Style pour blog1_2img.png et blog1_3img.png */
+.blog1_2img,
+.blog1_3img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 0;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto 1.2rem auto;
+}
+
+/* Section de contenu avec lettrine - RAPPROCHÉE DU HEADER */
+.content-section {
+  max-width: 1300px;
+  margin: 0 auto 2rem auto; /* Réduit de 4rem à 2rem pour rapprocher de la section suivante */
+  padding: 0 2rem;
+}
+
+/* Section avec la deuxième image - RAPPROCHÉE */
+.second-image-section {
+  max-width: 1300px;
+  margin: 0 auto 2rem auto; /* Réduit de 4rem à 2rem */
+  padding: 0 2rem;
+}
+
+.second-image-container {
+  width: 100%;
+}
+
+.second-image {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  margin-bottom: 0.5rem; /* Réduit de 1rem à 0.5rem pour rapprocher du texte bleu */
+  object-fit: cover;
+}
+
+.blue-text-section {
+  margin-bottom: 1rem; /* Réduit de 2rem à 1rem pour rapprocher du contenu suivant */
+  text-align: center;
+}
+
+.blue-caption {
+  font-size: 1rem;
+  color: #1e40af;
+  line-height: 1.6;
+  margin: 0;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-weight: normal;
+}
+
+.content-below-image {
+  text-align: left;
+}
+
+.regular-paragraph {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #000000;
+  text-align: justify;
+  margin-bottom: 1rem; /* Réduit de 1.5rem à 1rem pour rapprocher les paragraphes */
+  font-family: 'Arial', 'Helvetica', sans-serif;
+}
+
+.paragraph-container {
+  text-align: left;
+}
+
+.paragraph-with-lettrine {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #000000;
+  text-align: justify;
+  margin-bottom: 1rem; /* Réduit de 1.5rem à 1rem */
+  position: relative;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  text-indent: 0;
+}
+
+.lettrine {
+  float: left;
+  font-size: 5rem;
+  line-height: 4rem;
+  padding-right: 8px;
+  padding-top: 0;
+  margin-top: -5px;
+  font-weight: bold;
+  color: #000000;
+  font-family: 'Times New Roman', 'Times', serif;
+}
+
+/* Section avec la troisième image - RAPPROCHÉE */
+.third-image-section {
+  max-width: 1300px;
+  margin: 0 auto 2rem auto;
+  padding: 0 2rem;
+}
+
+/* Mode sombre */
+[data-theme="dark"] .blog1-page {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .main-title {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .blue-text {
+  color: #3b82f6;
+}
+
+[data-theme="dark"] .intro-text {
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .paragraph-with-lettrine {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .lettrine {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .blue-caption {
+  color: #3b82f6;
+}
+
+[data-theme="dark"] .regular-paragraph {
+  color: #ffffff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .blog1-header-section {
+    margin: 1.5rem 0 2rem 0; /* Réduit encore plus sur mobile */
+  }
+
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem; /* Réduit de 2rem à 1.5rem */
+    max-width: 100%;
+  }
+  
+  .header-text {
+    text-align: center;
+  }
+  
+  .main-title {
+    font-size: 3rem;
+    margin-bottom: 0.6rem; /* Réduit sur mobile aussi */
+  }
+  
+  .portrait-image {
+    width: 280px;
+    height: 230px;
+  }
+  
+  .lettrine {
+    font-size: 4rem;
+    line-height: 3.2rem;
+  }
+
+  .content-section {
+    padding: 0 1rem;
+    margin: 0 auto 1.5rem auto; /* Réduit les marges sur mobile */
+  }
+
+  .second-image-section {
+    padding: 0 1rem;
+    margin: 0 auto 1.5rem auto; /* Réduit les marges sur mobile */
+  }
+
+  .third-image-section {
+    padding: 0 1rem;
+    margin: 0 auto 1.5rem auto; /* Réduit les marges sur mobile */
+  }
+
+  .blue-text-section {
+    margin-bottom: 0.8rem; /* Réduit sur mobile */
+  }
+
+  .regular-paragraph {
+    margin-bottom: 0.8rem; /* Réduit sur mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem; /* Encore plus réduit sur très petits écrans */
+  }
+  
+  .portrait-image {
+    width: 250px;
+    height: 200px;
+  }
+  
+  .lettrine {
+    font-size: 3.5rem;
+    line-height: 2.8rem;
+  }
+  
+  .intro-text {
+    font-size: 0.95rem;
+  }
+
+  .header-content {
+    gap: 1rem; /* Gap encore plus réduit sur très petits écrans */
+  }
+  .third-image-section {
+  max-width: 1300px;
+  margin: 0 auto 2rem auto; /* Réduit de 4rem à 2rem */
+  padding: 0 2rem;
+}
+.third-image-container {
+  width: 100%;
+}
+.third-image {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  margin-bottom: 0.5rem; /* Réduit de 1rem à 0.5rem pour rapprocher du texte bleu */
+  object-fit: cover;
+}
+.third-image-section {
+    padding: 0 1rem;
+    margin: 0 auto 1.5rem auto; /* Réduit les marges sur mobile */
+  }
+}

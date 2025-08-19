@@ -1,0 +1,75 @@
+/* Page story2 avec background bleu */
+.story2-page {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #003ADD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 2rem; /* Réduire encore plus le padding vertical */
+  margin-top: -11rem; /* Augmenter la marge négative pour rapprocher davantage */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+.carousel {
+  position: relative;
+  width: 70vw;
+  height: calc(70vw * 9 / 16);
+  max-width: 800px;
+  max-height: calc(800px * 9 / 16);
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.left-arrow, .right-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: white;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+/* Styles pour le thème sombre - Story2 */
+.story2-page.dark {
+  background-color: #1a1a1a; /* Background sombre au lieu du bleu */
+}
+
+.story2-page.dark p,
+.story2-page.dark .content-paragraph,
+.story2-page.dark .text-content {
+  color: #ffffff; /* Paragraphes en blanc en mode sombre */
+}
+
+/* Si vous voulez garder un effet bleu mais plus sombre */
+.story2-page.dark.blue-theme {
+  background-color: #001122; /* Bleu très sombre */
+}

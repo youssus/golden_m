@@ -1,0 +1,264 @@
+/* 1. Fixed top bar avec support du mode sombre */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-primary, #ffffff);
+  padding-top: 10px;
+  z-index: 50;
+  transition: background-color 0.3s ease;
+}
+
+/* 2. Inner container */
+.header-container {
+  position: relative;                  
+  margin: 0 auto;                      
+  max-width: 1280px;                   
+  height: 72px;          /* a bit taller for vertical breathing */
+  display: flex;                       
+  align-items: center;                 
+  padding: 0 32px;
+  justify-content: center; /* Centre tout le contenu */                
+}
+
+/* 3. Left nav (Service / Story / Blog / Media) */
+.nav-left {
+  display: flex;                       
+  gap: 80px; /* Espacement uniforme entre tous les éléments */
+  margin-right: 300px; /* Distance optimale entre Media et le logo */                           
+}
+.nav-left a {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--text-primary, #1f2937);
+  text-decoration: none;
+  padding: 0;          /* flush to bottom of container */
+  line-height: 72px;   /* vertically center in 72px bar */
+  transition: color 0.3s ease;
+}
+
+/* 4. Center logo - Parfaitement centré avec espacement égal */
+.logo-wrapper {
+  position: absolute;                  
+  left: 50%;                           
+  transform: translateX(-50%);         
+}
+
+.logo {
+  height: 48px;         /* slightly larger to match screenshot */
+  transition: transform 0.3s ease; /* Remet les transitions */
+}
+
+.logo:hover {
+  transform: scale(1.05); /* Remet l'effet de zoom */
+}
+
+/* 5. Right nav (Contact / EN / Theme / Search) */
+.nav-right {
+  display: flex;                       
+  gap: 80px; /* Espacement uniforme entre tous les éléments */                      
+  margin-left: 230px; /* Distance de 200px entre le logo et Contact */
+  align-items: flex-start; /* allow us to nudge them upward */
+}
+.nav-right a {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--text-primary, #1f2937);
+  text-decoration: none;
+  padding: 0;          /* flush to bottom of container */
+  line-height: 72px;   /* vertically center in 72px bar */
+  transition: color 0.3s ease;
+}
+/* Language dropdown */
+.language-dropdown {
+  position: relative;
+}
+
+.language-button {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #1f2937;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 72px;
+  transition: color 0.3s ease;
+}
+
+.language-button:focus {
+  outline: none;
+}
+
+.language-button:hover {
+  color: #4A90E2;
+}
+
+.language-button svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.language-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.language-options.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.language-option {
+  padding: 12px 24px;
+  font-size: 1rem;
+  color: #1f2937;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.language-option:hover {
+  background-color: #f3f4f6;
+  color: #4A90E2;
+}
+
+.language-option:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.language-option:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Theme Toggle Button - Sans effets hover/clic */
+.theme-toggle-button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: default; /* Supprime le curseur pointer */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary, #1f2937);
+  margin-left: 0; /* Pas de marge supplémentaire */
+  height: 72px; /* Même hauteur que le conteneur */
+  line-height: 72px; /* Même alignement vertical que les autres liens */
+  transition: none; /* Supprime toutes les transitions */
+}
+
+.theme-toggle-button:focus {
+  outline: none; /* Supprime le cadre au focus */
+  box-shadow: none; /* Supprime toute ombre */
+}
+
+.theme-toggle-button:hover {
+  background: none; /* Supprime l'effet hover */
+  transform: none; /* Supprime l'effet de déplacement */
+}
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Search Button - Même style que le bouton de thème */
+.header .search-button {
+  background: none !important;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary, #1f2937) !important; /* Même couleur que les autres boutons */
+  margin-left: 0; /* Pas de marge supplémentaire */
+  height: 72px; /* Même hauteur que le conteneur */
+  line-height: 72px; /* Même alignement vertical que les autres liens */
+}
+
+.header .search-button:focus {
+  outline: none; /* Supprime le cadre au focus */
+  box-shadow: none; /* Supprime toute ombre */
+}
+
+.header .search-button:hover {
+  background: none !important;
+  color: var(--text-primary, #1f2937) !important;
+}
+
+.header .search-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Support du mode sombre */
+:root[data-theme="dark"] .header {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Logo blanc en mode sombre */
+:root[data-theme="dark"] .logo {
+  filter: brightness(0) invert(1); /* Transforme le logo en blanc */
+}
+
+:root[data-theme="dark"] .nav-left a,
+:root[data-theme="dark"] .nav-right a {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .nav-left a:hover,
+:root[data-theme="dark"] .nav-right a:hover {
+  color: var(--accent-color);
+}
+
+:root[data-theme="dark"] .language-button {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .language-button:hover {
+  color: var(--accent-color);
+}
+
+:root[data-theme="dark"] .language-options {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+:root[data-theme="dark"] .language-option {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .language-option:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--accent-color);
+}
+
+:root[data-theme="dark"] .theme-toggle-button {
+  color: var(--text-primary);
+}
+
+/* Même couleur que les autres boutons en mode sombre */
+:root[data-theme="dark"] .header .search-button {
+  color: var(--text-primary) !important; /* Même couleur que les autres boutons */
+}

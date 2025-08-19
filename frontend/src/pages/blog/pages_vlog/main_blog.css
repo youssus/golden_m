@@ -1,0 +1,681 @@
+/* Image sous le mot Blog */
+.blog-under-image {
+  display: block;
+  margin: 24px auto 0 auto;
+  max-width: 220px;
+  height: auto;
+}
+/* Page Blog - Design épuré avec 6 cartes en grille 2x3 */
+.blog-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding-top: 0; /* Retiré le padding pour laisser la navbar gérer l'espacement */
+}
+
+.blog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 0 2rem; /* Supprimé le padding-top pour que le hero soit adjacent à la navbar */
+}
+
+/* Hero Section - Pleine largeur avec image panther-hero adjacent à la navbar */
+.blog-hero {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  text-align: center;
+  padding: 8rem 0;
+  background-image: url('/panther-hero.png');
+  background-size: cover;
+  background-position: center top; /* Position en haut pour montrer les oreilles */
+  background-repeat: no-repeat;
+  position: relative;
+  margin-top: 70px; /* Marge pour compenser la hauteur de la navbar fixe */
+  margin-bottom: 4rem;
+  min-height: 60vh; /* Hauteur minimale pour bien voir la panthère */
+}
+
+/* Overlay sombre pour améliorer la lisibilité du texte */
+.blog-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.blog-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #003ADD;
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.blog-subtitle {
+  font-size: 1.2rem;
+  color: #ffffff;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Description Section - Paragraphe sous l'image hero */
+.blog-description {
+  width: 100%;
+  text-align: center;
+  margin: 3rem 0 4rem 0;
+  padding: 0 2rem;
+}
+
+.blog-description-text {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  font-style: normal;
+  color: #000000;
+  background-color: #ffffff;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  text-decoration: none;
+  text-shadow: none;
+  letter-spacing: normal;
+}
+
+/* Articles Section */
+.blog-articles {
+  padding-bottom: 4rem;
+}
+
+/* Grille 2x3 avec composition artistique équilibrée */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes égales */
+  grid-template-rows: repeat(3, auto); /* 3 rangées automatiques */
+  gap: 5.5rem 4.5rem; /* Espacement optimal : 5.5rem vertical, 4.5rem horizontal */
+  max-width: 1150px; /* Largeur optimisée pour la composition */
+  margin: 0 auto;
+  padding: 3rem 2rem; /* Padding augmenté pour plus d'élégance */
+  align-items: start; /* Permet les décalages verticaux */
+}
+
+/* Article Cards avec décalages verticaux artistiques et espacement bien défini */
+.article-card {
+  background: #ffffff;
+  border-radius: 0; /* Bords tranchants (coins carrés) */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: none;
+  width: 100%;
+  max-width: 380px; /* Largeur maximale pour éviter qu'elles soient trop larges */
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto; /* Centre chaque carte dans sa cellule */
+}
+
+/* Décalages verticaux harmonieux et équilibrés */
+.article-card:nth-child(1) { transform: translateY(0); }
+.article-card:nth-child(2) { transform: translateY(12px); } /* Décalage plus subtil pour s'harmoniser */
+.article-card:nth-child(3) { transform: translateY(10px); }
+.article-card:nth-child(4) { transform: translateY(-10px); } /* Légèrement remontée */
+.article-card:nth-child(5) { transform: translateY(0); }
+.article-card:nth-child(6) { transform: translateY(15px); }
+
+/* Effet hover adapté aux décalages harmonieux */
+.article-card:nth-child(1):hover { transform: translateY(-8px); }
+.article-card:nth-child(2):hover { transform: translateY(4px); } /* 12px - 8px */
+.article-card:nth-child(3):hover { transform: translateY(2px); } /* 10px - 8px */
+.article-card:nth-child(4):hover { transform: translateY(-18px); } /* -10px - 8px */
+.article-card:nth-child(5):hover { transform: translateY(-8px); }
+.article-card:nth-child(6):hover { transform: translateY(7px); } /* 15px - 8px */
+
+.article-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image rectangulaire de portrait classique occupant toute la largeur */
+.article-image {
+  position: relative;
+  width: 100%;
+  height: 60%; /* 60% de la hauteur de la carte */
+  overflow: hidden;
+  flex-shrink: 0; /* Empêche la compression */
+}
+
+.article-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover .article-image img {
+  transform: scale(1.03); /* Léger zoom sur l'image au survol */
+}
+
+/* Bloc blanc avec fond blanc contenant les 3 éléments */
+.article-content {
+  background: #ffffff;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 40%; /* 40% de la hauteur de la carte */
+  justify-content: space-between; /* Distribue les éléments uniformément */
+}
+
+/* (1) Titre centré à gauche, bleu vif, gras, typographie moderne */
+.article-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #0040ff; /* Bleu vif */
+  line-height: 1.3;
+  margin: 0 0 0.8rem 0;
+  text-align: left; /* Centré à gauche */
+  font-family: 'Arial', 'Helvetica', sans-serif; /* Typographie moderne */
+}
+
+/* (2) Paragraphe de texte factice en gris foncé, taille moyenne */
+.article-description {
+  color: #4a4a4a; /* Gris foncé */
+  line-height: 1.6;
+  font-size: 0.95rem; /* Taille moyenne */
+  margin: 0 0 1rem 0;
+  flex-grow: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3; /* Propriété standard pour la compatibilité */
+  -webkit-box-orient: vertical;
+}
+
+/* (3) Lien "voir plus" en bleu clair, en bas à gauche */
+.article-link {
+  color: #4A90E2; /* Bleu clair */
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  align-self: flex-start; /* Placé à gauche */
+  margin-top: auto; /* Poussé vers le bas */
+  transition: color 0.3s ease;
+}
+
+.article-link:hover {
+  color: #0040ff;
+  text-decoration: underline;
+}
+
+/* Support du mode sombre */
+[data-theme="dark"] .blognav {
+  --blognav-bg: #1a1a1a;
+  --blognav-border: #333333;
+  --blognav-text: #ffffff;
+  --blognav-hover: rgba(255, 255, 255, 0.1);
+  --blognav-primary: #4A90E2;
+}
+
+/* Mode sombre pour la page blog */
+[data-theme="dark"] .blog-page {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .blog-hero {
+  background-color: #1a1a1a;
+}
+
+[data-theme="dark"] .blog-hero::before {
+  background: rgba(0, 0, 0, 0.6); /* Overlay plus sombre en mode sombre */
+}
+
+[data-theme="dark"] .blog-description-text {
+  color: #ffffff;
+  background-color: #121212;
+}
+
+[data-theme="dark"] .article-card {
+  background: #1e1e1e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .article-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .article-content {
+  background: #1e1e1e;
+}
+
+[data-theme="dark"] .article-title {
+  color: #4A90E2;
+}
+
+[data-theme="dark"] .article-description {
+  color: #cccccc;
+}
+
+[data-theme="dark"] .article-link {
+  color: #6BB6FF;
+}
+
+[data-theme="dark"] .article-link:hover {
+  color: #4A90E2;
+}
+
+[data-theme="dark"] .article-detail-container {
+  background: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .article-detail-content {
+  background: #1e1e1e;
+}
+
+[data-theme="dark"] .article-detail-content h2 {
+  color: #4A90E2;
+}
+
+[data-theme="dark"] .article-detail-content p {
+  color: #cccccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .blog-container {
+    padding: 0 1rem;
+  }
+  
+  .blog-hero {
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+  
+  .blog-title {
+    font-size: 2.5rem;
+  }
+  
+  .blog-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .articles-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 2rem;
+    max-width: 500px;
+  }
+  
+  .article-image {
+    height: 200px;
+  }
+  
+  .article-content {
+    padding: 1.25rem;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-page {
+    padding-top: 70px;
+  }
+  
+  .blog-title {
+    font-size: 2rem;
+  }
+  
+  .blog-subtitle {
+    font-size: 1rem;
+  }
+  
+  .article-image {
+    height: 180px;
+  }
+  
+  .article-content {
+    padding: 1rem;
+  }
+}
+
+/* Styles pour les pages détaillées de blog */
+.blog-article-detail {
+  padding: 2rem 0;
+}
+
+.article-detail-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 0; /* Bords tranchants pour cohérence */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.article-detail-image {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.article-detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-detail-content {
+  padding: 2rem;
+}
+
+.article-detail-content h2 {
+  font-size: 2rem;
+  color: #0040ff;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.article-detail-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .article-detail-container {
+    margin: 0 1rem;
+  }
+  
+  .article-detail-image {
+    height: 250px;
+  }
+  
+  .article-detail-content {
+    padding: 1.5rem;
+  }
+  
+  .article-detail-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .article-detail-content p {
+    font-size: 1rem;
+  }
+}
+
+/* Styles pour la nouvelle structure de blog1 - "The Woman" */
+
+/* Section header avec titre et image portrait */
+.blog-header-section {
+  margin: 4rem 0 6rem 0;
+  padding: 0 2rem;
+}
+
+.header-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-text {
+  flex: 1;
+  text-align: left;
+}
+
+.main-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #000000;
+}
+
+.blue-text {
+  color: #2563eb;
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.print-button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.print-button:hover {
+  background-color: #1d4ed8;
+}
+
+.header-image {
+  flex: 0 0 300px;
+}
+
+.portrait-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Sections de contenu avec lettrines */
+.content-section {
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+  padding: 0 2rem;
+}
+
+.paragraph-container {
+  text-align: left;
+}
+
+.paragraph-with-lettrine {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #000000;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.lettrine {
+  float: left;
+  font-size: 4rem;
+  line-height: 3rem;
+  padding-right: 8px;
+  padding-top: 4px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.regular-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #000000;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+}
+
+.regular-paragraph strong {
+  font-weight: bold;
+}
+
+.regular-paragraph em {
+  font-style: italic;
+}
+
+/* Sections d'images */
+.image-section {
+  text-align: center;
+  margin: 4rem 0;
+  padding: 0 2rem;
+}
+
+.content-image {
+  width: 90%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.image-caption {
+  color: #2563eb;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.image-caption:hover {
+  color: #1d4ed8;
+}
+
+/* Section suggestions avec carrousel */
+.suggestions-section {
+  text-align: center;
+  margin: 6rem 0 4rem 0;
+  padding: 0 2rem;
+}
+
+.suggestions-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2563eb;
+  margin-bottom: 3rem;
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.carousel-arrow {
+  background: rgba(37, 99, 235, 0.3);
+  border: none;
+  font-size: 2rem;
+  color: #2563eb;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-arrow:hover {
+  background: rgba(37, 99, 235, 0.5);
+}
+
+.suggestion-card {
+  max-width: 400px;
+  text-align: center;
+}
+
+.suggestion-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+
+.suggestion-description {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #2563eb;
+}
+
+.dot:hover {
+  background-color: #9ca3af;
+}
+
+/* Responsive design pour la nouvelle structure */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .header-text {
+    text-align: center;
+  }
+  
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .portrait-image {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .lettrine {
+    font-size: 3rem;
+    line-height: 2.5rem;
+  }
+  
+  .carousel-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .carousel-arrow {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+  
+}

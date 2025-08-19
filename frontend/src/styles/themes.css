@@ -1,0 +1,104 @@
+/* Système de thèmes - Mode Jour/Nuit */
+
+/* Variables CSS pour le thème clair */
+:root[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #f8f9fa;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --border-color: #e5e5e5;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --navbar-bg: rgba(255, 255, 255, 0.95);
+  --button-bg: #ffffff;
+  --button-hover: #f0f0f0;
+  --accent-color: #0040ff;
+  --accent-hover: #2c5aa0;
+}
+
+/* Variables CSS pour le thème sombre */
+:root[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3a3a3a;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-tertiary: #999999;
+  --border-color: #404040;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --navbar-bg: rgba(26, 26, 26, 0.95);
+  --button-bg: #2d2d2d;
+  --button-hover: #404040;
+  --accent-color: #4A90E2;
+  --accent-hover: #6BA3F0;
+}
+
+/* Styles de base utilisant les variables */
+body.light-theme {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Styles pour les éléments qui doivent s'adapter au thème */
+.theme-adaptive {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.theme-adaptive-secondary {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.theme-adaptive-tertiary {
+  background-color: var(--bg-tertiary);
+  color: var(--text-tertiary);
+  border-color: var(--border-color);
+  transition: all 0.3s ease;
+}
+
+/* Styles pour les boutons adaptatifs */
+.theme-button {
+  background-color: var(--button-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.theme-button:hover {
+  background-color: var(--button-hover);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+/* Styles pour les liens adaptatifs */
+.theme-link {
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+
+.theme-link:hover {
+  color: var(--accent-hover);
+}
+
+/* Styles pour les ombres adaptatives */
+.theme-shadow {
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: box-shadow 0.3s ease;
+}
+
+.theme-shadow-lg {
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: box-shadow 0.3s ease;
+}

@@ -1,0 +1,99 @@
+/* Page Story - Styles optimisés pour le scroll avec support du mode sombre */
+.story-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden; /* Empêche le scroll horizontal */
+  overflow-y: auto; /* Permet le scroll vertical */
+  transition: background-color 0.3s ease;
+}
+
+.story-main-content {
+  flex: 1;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  min-height: calc(100vh - 140px); /* Ajuste pour navbar + footer */
+  gap: 2rem; /* Espacement entre les éléments */
+}
+
+.story-main-title {
+  color: var(--text-primary, #333);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.story-main-description {
+  color: var(--text-secondary, #666);
+  font-size: 1.2rem;
+  max-width: 600px;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  transition: color 0.3s ease;
+}
+
+/* Responsive design pour la page Story */
+@media (max-width: 768px) {
+  .story-main-content {
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .story-main-title {
+    font-size: 2rem;
+  }
+
+  .story-main-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Styles pour le thème sombre */
+.story-page-container.dark {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.story-main-content.dark {
+  background-color: #1a1a1a;
+}
+
+/* Thème sombre pour les sections individuelles */
+.story-page.dark .story-main-content {
+  background-color: #1a1a1a;
+}
+
+/* Assurer que le thème s'applique aux composants enfants */
+.story-page.dark {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Forcer la suppression de tout background blanc pour les textes de citation en mode sombre */
+.story-page.dark .quote-text,
+.story-page.dark .quote-author,
+.story-page.dark h1,
+.story-page.dark p {
+  background-color: transparent !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  color: #ffffff !important;
+}

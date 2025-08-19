@@ -1,0 +1,67 @@
+/* Centrage et style du bouton image */
+.center-image-btn {
+	/* Centrage et espacement pour éviter l'image collée à la navbar/footer */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	padding-top: 100px; /* Espace pour la navbar fixe */
+	padding-bottom: 100px; /* Espace pour le footer */
+	box-sizing: border-box;
+}
+
+.image-btn {
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: none;
+	transition: transform 0.2s;
+}
+
+.image-btn:hover {
+	transform: scale(1.04);
+}
+
+.image-container {
+	position: relative;
+	display: inline-block;
+}
+
+.puni-image {
+	width: 420px;
+	max-width: 90vw;
+	border-radius: 18px;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+	display: block;
+}
+
+.text-overlay {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	color: white;
+	z-index: 2;
+}
+
+.puni-title {
+	font-size: 2.2rem;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+	letter-spacing: 2px;
+	margin-bottom: 8px;
+}
+
+.puni-subtitle {
+	font-size: 1.1rem;
+	font-weight: 300;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+	letter-spacing: 1px;
+}

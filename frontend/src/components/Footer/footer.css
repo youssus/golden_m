@@ -1,0 +1,134 @@
+/* src/components/footer/Footer.css - Avec support du mode sombre */
+
+/* Footer */
+.main-footer {
+  background: var(--bg-primary, #fff);
+  border-top: 1px solid var(--border-color, #e5e7eb);
+  margin-top: auto; /* Pousse le footer vers le bas */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 1rem 2rem; /* Revenir à 5rem comme il y a 2 modifications */
+  display: flex;
+  justify-content: center; /* Centrer le contenu */
+}
+
+.footer-col.newsletter {
+  text-align: center; /* Centrer tout le contenu de la colonne */
+  max-width: 500px; /* Limiter la largeur */
+}
+
+.footer-col h3 {
+  color: var(--accent-color, #2563eb);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-col p {
+  font-size: 0.875rem;
+  color: var(--text-secondary, #4b5563);
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-col ul li a {
+  color: var(--accent-color, #3b82f6);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Newsletter subscribe */
+.subscribe {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.5rem;
+}
+
+.input-sub {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: #d1d5db;
+}
+
+.btn-sub {
+  padding: 0 1rem;
+  background-color: #9e9b9b;
+  color: #000000;
+  border: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  cursor: pointer;
+}
+
+.btn-sub:hover {
+  background-color: #74777d;
+}
+
+/* Footer logo and description */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centrer le logo */
+  margin-top: 0; /* Supprimé complètement pour remonter au maximum */
+  margin-bottom: 0.5rem; /* Réduit encore de 1rem à 0.5rem */
+}
+
+.footer-logo .logo {
+  max-width: 120px;
+  height: auto;
+}
+
+.footer-desc {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0;
+  margin-bottom: 0; /* Ajouté pour supprimer l'espace en bas */
+  text-align: center; /* Centrer le texte */
+  line-height: 1.6; /* Meilleur espacement des lignes */
+  max-width: 400px; /* Limiter la largeur pour forcer 2 lignes */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Footer bottom social icons */
+.footer-bottom {
+  background: #2563eb;
+  padding: 1rem 0;
+}
+
+.footer-bottom .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.footer-bottom .social-icons a {
+  color: #fff;
+  font-size: 1.25rem;
+  transition: color 0.2s;
+}
+
+.footer-bottom .social-icons a:hover {
+  color: #bfdbfe;
+}

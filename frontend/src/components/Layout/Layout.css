@@ -1,0 +1,38 @@
+/* Layout Component - Gestion cohérente du scroll */
+
+.layout-container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-container main {
+  flex: 1; /* Le contenu principal prend tout l'espace disponible */
+}
+
+/* Layout avec scroll activé (défaut) */
+.layout-container.scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Layout sans scroll (pour des pages spécifiques comme Home) */
+.layout-container.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Responsive - assure un comportement cohérent sur mobile */
+@media (max-width: 768px) {
+  .layout-container {
+    overflow-x: hidden;
+  }
+  
+  .layout-container.scrollable {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Scroll fluide sur iOS */
+  }
+}

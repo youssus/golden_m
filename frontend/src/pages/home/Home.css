@@ -1,0 +1,242 @@
+/* Page Home - Container principal */
+.home-page {
+  min-height: auto;
+  overflow-y: auto; /* Permet le scroll si le contenu dépasse */
+  overflow-x: hidden; /* Empêche le scroll horizontal */
+}
+
+.container {
+  min-height: 100vh;
+  background-color: var(--bg-primary, #ffffff);
+  display: flex;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+/* Sidebar avec icônes sociales */
+.sidebar {
+  width: 80px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+}
+
+.sidebar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  height: 60%;
+  width: 1px;
+  background: #0040ff;
+  opacity: 0.3;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.social-icon {
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding-top: 20px;
+}
+
+.social-icon a {
+  color: #0040ff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon a:hover {
+  opacity: 0.7;
+  transform: translateY(-2px);
+}
+
+.social-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Zone de contenu principal */
+.main-content {
+  flex: 1;
+  display: flex;
+  padding-left: 20px;
+}
+
+/* Section de contenu à gauche */
+.content-section {
+  flex: 1;
+  background-color: transparent;
+  padding: 64px 48px;
+  display: flex;
+  align-items: center;
+}
+
+.content-wrapper {
+  max-width: 700px;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 1;
+  color: var(--text-primary, #000000);
+  margin-bottom: 50px;
+  font-family: 'CocoSharp Trial', sans-serif;
+  margin-left: 80px; /* Plus loin de la ligne bleue (était 40px) */
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-top: 85px; /* Déplace le titre encore plus bas (petite distance) */
+  transition: color 0.3s ease;
+}
+
+@font-face {
+  font-family: 'CocoSharp Trial';
+  src: url('/fonts/CocoSharpTrial-Regular.otf') format('opentype');
+}
+
+.description {
+  color: var(--text-secondary, #718096);
+  line-height: 1.3;
+  font-size: 1.1rem;
+    margin-bottom: 40px; /* Espace standard sous la description */
+  margin-left: 100px; /* Un peu plus à droite que le titre (était 80px) */
+  text-align: justify;
+  font-family: 'CocoSharp Trial', sans-serif;
+  max-width: 650px;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+
+.learn-more {
+  display: flex;
+  align-items: center;
+  color: var(--accent-color, #4C83FF);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.125rem;
+  justify-content: flex-end;
+  width: 100%;
+    margin-top: 60px; /* Espace fixe au-dessus du bouton */
+  padding-right: 20px; /* Déplacé plus à gauche (était 40px) */
+  font-weight: bold;
+}
+
+.learn-more a {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.learn-more:hover {
+  color: var(--accent-hover, #2c5aa0);
+}
+
+.learn-more span {
+  margin-right: 8px;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.learn-more:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Section image à droite */
+.image-section {
+  width: 45%;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end; /* Place l'image en bas de la section */
+  height: 100vh; /* Prend toute la hauteur de la viewport */
+  padding-left: 40px; /* Réduit le padding pour déplacer l'image vers la gauche */
+  padding-top: 0; /* Enlève l'espace en haut */
+  padding-bottom: 0; /* Assure que l'image touche le bas */
+}
+
+/* Cadre bleu décoratif comme test.png */
+.blue-rectangle {
+  position: absolute;
+  top: 7%; /* Fixé à la même place */
+    left: 8%; /* Poussé très légèrement vers la gauche */
+  width: 80%; /* 80% de la largeur totale */
+  height: 80%; /* 80% de la hauteur totale */
+  background: transparent; /* Pas de remplissage intérieur */
+  border: 20px solid #0040ff; /* Bordure bleue épaisse de 20px */
+  z-index: 1; /* Derrière la statue */
+  box-sizing: border-box; /* Inclut la bordure dans les dimensions */
+}
+
+.statue-image {
+  width: 100%;
+  height: auto; /* Hauteur automatique pour préserver les proportions */
+  max-height: 80%; /* Limite la hauteur pour qu'elle reste dans la section */
+  object-fit: contain;
+  opacity: 1;
+  display: block;
+  position: relative;
+  z-index: 2; /* Au-dessus du rectangle bleu */
+  margin-bottom: 60px; /* Décale l'image un peu plus bas */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  .image-section {
+    width: auto;
+    height: 400px;
+  }
+  
+  .content-section {
+    padding: 32px 24px;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    padding: 16px 0;
+    justify-content: center;
+  }
+  
+  .content-section {
+    padding: 24px 16px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+}
