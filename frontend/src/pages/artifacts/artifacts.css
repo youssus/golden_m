@@ -1,0 +1,96 @@
+/* Styles pour les flèches personnalisées du carrousel */ 
+.custom-swiper-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.custom-swiper-arrow:hover {
+  background-color: #f5f5f5;
+  border-color: #1976d2;
+}
+
+.custom-swiper-arrow:hover svg path {
+  stroke: #1976d2;
+}
+
+/* arrow positions - pulled closer so they align with the carousel */
+.custom-swiper-arrow.prev {
+  left: 8px; /* inside container */
+}
+
+.custom-swiper-arrow.next {
+  right: 8px; /* inside container */
+}
+
+/* Ensure slick slider track uses flex so slides line up horizontally */
+.slick-track {
+  display: flex !important;
+  align-items: flex-start;
+}
+
+/* Make each slick slide a flexible box (so center works) */
+.slick-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: flex-start;
+  height: auto !important;
+}
+
+/* small spacing between slides (slide wrapper already has paddingRight) */
+.slick-slide > div {
+  /* if you want extra spacing in addition to the inline style */
+  /* margin-right: 12px; */
+}
+
+/* Allow horizontal scrollbar on very small screens (optional) */
+.slick-list {
+  /* keep overflow hidden during normal slick behavior, but allow touch/pointer scrolling */
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide slick's built-in arrows (we use our custom arrows) */
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+/* Dots style */
+.slick-dots {
+  bottom: -50px !important;
+}
+
+.slick-dots li button:before {
+  color: #1976d2;
+  opacity: 0.3;
+  font-size: 8px;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #1976d2;
+}
+
+/* Responsive: hide custom arrows on small screens (you already had this) */
+@media (max-width: 768px) {
+  .custom-swiper-arrow {
+    display: none;
+  }
+  /* let the user swipe; keep things horizontal */
+  .slick-track {
+    /* still flex; variableWidth lets slides be full-width if needed */
+  }
+}

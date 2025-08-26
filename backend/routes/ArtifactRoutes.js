@@ -1,18 +1,19 @@
+// routes/artifactRoutes.js
 const express = require("express");
 const router = express.Router();
-const artifactController = require("../controller/ArtifactController");
+const ctrl = require("../controller/ArtifactController");
 
-// Create
-router.post("/create", artifactController.createArtifact);
+// create with upload
+router.post("/create", ctrl.uploadMiddleware, ctrl.createArtifact);
 
-// Read
-router.get("/getall", artifactController.getAllArtifacts);
-router.get("/get/:id", artifactController.getArtifactById);
+// read
+router.get("/getall", ctrl.getAll);
+router.get("/get/:id", ctrl.getOne);
 
-// Update
-router.put("/update/:id", artifactController.updateArtifact);
+// update (optional files)
+router.put("/update/:id", ctrl.uploadMiddleware, ctrl.updateArtifact);
 
-// Delete
-router.delete("/delete/:id", artifactController.deleteArtifact);
+// delete
+router.delete("/delete/:id", ctrl.deleteArtifact);
 
 module.exports = router;

@@ -10,7 +10,7 @@ const HomeServ = () => {
 			<div>
 				<Navbar />
 				<div className="center-image-btn">
-					<button className="image-btn" onClick={() => navigate('/article')}>
+					<button className="image-btn" onClick={() => navigate('/artifacts')}>
 						<div className="image-container">
 							<img src="/puni.JPG" alt="Punicartoon" className="puni-image" />
 							<div className="text-overlay">

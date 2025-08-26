@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react';
 import './blog2.css';
-import Navbar from '../../../components/blog_navbar/blognav';
+import Navbar from '../../../components/navbar/navbar';
 import Footer from '../../../components/Footer/footer';
-import BlogNav from '../../../components/blog_navbar/blognav';
 import Suggestions from './Suggestions';
 
-const Blog1 = () => {
+export default function Blog1() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="blog1-page">
-      <BlogNav />
+      <Navbar />
       
       {/* Header Section */}
       <section className="blog1-header-section">
@@ -92,4 +91,3 @@ const Blog1 = () => {
   );
 };
 
-export default Blog1;

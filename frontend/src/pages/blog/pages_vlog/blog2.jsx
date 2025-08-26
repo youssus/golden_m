@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import './blog2.css';
-import Navbar from '../../../components/blog_navbar/blognav';
 import Footer from '../../../components/Footer/footer';
-import BlogNav from '../../../components/blog_navbar/blognav';
 import Suggestions from './Suggestions';
+import Navbar from '../../../components/navbar/navbar';
 
 const Blog1 = () => {
   useEffect(() => {
@@ -12,7 +11,7 @@ const Blog1 = () => {
 
   return (
     <div className="blog1-page">
-      <BlogNav />
+      <Navbar />
       
       {/* Header Section */}
       <section className="blog1-header-section">
