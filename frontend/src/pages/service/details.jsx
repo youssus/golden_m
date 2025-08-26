@@ -1,106 +1,109 @@
+// Details.jsx
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/navbar/navbar.jsx";
 import Footer from "../../components/Footer/footer.jsx";
-import "./article.css";
+import "./details.css";
 import axios from "axios";
 
-export default function details() {
+export default function Details() {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("DESCRIPTION");
   const [artifact, setArtifact] = useState(null);
+  const [mainIndex, setMainIndex] = useState(0);
   const serverUrl = "http://localhost:3000";
+
   const getImageUrl = (p) => {
-    if (!p) return;
-    return p.startsWith("http") ? p : `${serverUrl}/${p}`;
+    if (!p) return undefined;
+    return typeof p === "string" && p.startsWith("http") ? p : `${serverUrl}/${p}`;
   };
 
   useEffect(() => {
     if (!id) return;
+    let cancelled = false;
     axios
       .get(`${serverUrl}/api/artifacts/get/${id}`)
       .then((res) => {
+        if (cancelled) return;
         setArtifact(res.data);
+        setMainIndex(0);
       })
       .catch((err) => {
         console.error("Erreur fetching artifact:", err);
         setArtifact(null);
       });
-  }, [id, serverUrl]);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [id]);
+
+  const thumbnails = Array.isArray(artifact?.pictures) ? artifact.pictures : [];
+
+  const mainImageSrc = artifact
+    ? thumbnails.length > 0
+      ? getImageUrl(thumbnails[mainIndex] ?? thumbnails[0])
+      : artifact.banner
+      ? getImageUrl(artifact.banner)
+      : undefined
+    : undefined;
 
   return (
     <div className="article-page">
       <Navbar />
 
-      <div className="article-container">
-        <div className="product-section">
-          {/* Left sidebar with small images */}
-          <div className="product-thumbnails">
-            {Array.isArray(artifact?.pictures) && artifact.pictures.length > 0
-              ? artifact.pictures.map((p, idx) => (
-                  <img
-                    key={idx}
-                    src={getImageUrl(p)}
-                    alt={`Artifact thumbnail ${idx}`}
-                    className="thumbnail"
-                    name={`ARTIFACT IMAGE [${idx}]`}
-                  />
-                ))
-              : null}
-          </div>
+      <main className="article-container">
+        <section className="card product-section">
+          <aside className="product-thumbnails" aria-label="Product thumbnails">
+            {thumbnails.length > 0 ? (
+              thumbnails.map((p, idx) => (
+                <button
+                  key={idx}
+                  className={`thumbnail-btn ${idx === mainIndex ? "selected" : ""}`}
+                  onClick={() => setMainIndex(idx)}
+                  aria-label={`Show image ${idx + 1}`}
+                >
+                  <img src={getImageUrl(p)} alt={`Thumbnail ${idx + 1}`} />
+                </button>
+              ))
+            ) : (
+              <div className="thumbnail-placeholder">No images</div>
+            )}
+          </aside>
 
-          {/* Main product image */}
-          <div className="main-product-image" name="ARTIFACT IMAGE [0]">
-            <img
-              src={
-                artifact
-                  ? Array.isArray(artifact.pictures) && artifact.pictures.length > 0
-                    ? getImageUrl(artifact.pictures[0])
-                    : artifact.banner
-                    ? getImageUrl(artifact.banner)
-                    : undefined
-                  : undefined
-              }
-              alt={artifact?.title || "Golden Ring"}
-            />
-          </div>
+          <figure className="main-product-image" aria-label="Main product image">
+            {mainImageSrc ? (
+              <img src={mainImageSrc} alt={artifact?.title ?? "Artifact"} />
+            ) : (
+              <div className="image-fallback">No image available</div>
+            )}
+          </figure>
 
-          {/* Product info */}
-          <div className="product-info">
-            <h1 className="product-title">
-              {artifact?.title || "ARTIFACT TITLE"}
-            </h1>
-            <p className="product-description">
-              {artifact?.subDescription || "ARTIFACT SUBDESCRIPTION"}
-            </p>
-            <p className="product-ref">
-              <span className="ref-label">Ref :</span>{" "}
-              {artifact?._id || "ARTIFACT_ID"}
-            </p>
-          </div>
-        </div>
+          <aside className="product-info">
+            <h1 className="product-title">{artifact?.title || "ARTIFACT TITLE"}</h1>
+            <p className="product-sub">{artifact?.subDescription || "ARTIFACT SUBDESCRIPTION"}</p>
 
-        {/* Tabs section */}
-        <div className="tabs-section">
+            <div className="meta">
+              <p className="product-ref">
+                <span className="ref-label">Ref :</span> {artifact?._id || "ARTIFACT_ID"}
+              </p>
+            </div>
+          </aside>
+        </section>
+
+        <section className="card tabs-section">
           <div className="tabs-header">
-            <button
-              className={`tab ${activeTab === "DESCRIPTION" ? "active" : ""}`}
-              onClick={() => setActiveTab("DESCRIPTION")}
-            >
-              DESCRIPTION
-            </button>
-            <button
-              className={`tab ${activeTab === "INFORMATION" ? "active" : ""}`}
-              onClick={() => setActiveTab("INFORMATION")}
-            >
-              INFORMATION COMPLÉMENTAIRES
-            </button>
-            <button
-              className={`tab ${activeTab === "DESIGN" ? "active" : ""}`}
-              onClick={() => setActiveTab("DESIGN")}
-            >
-              DESIGN
-            </button>
+            {["DESCRIPTION", "INFORMATION", "DESIGN"].map((t) => (
+              <button
+                key={t}
+                className={`tab ${activeTab === t ? "active" : ""}`}
+                onClick={() => setActiveTab(t)}
+                aria-pressed={activeTab === t}
+                type="button"
+              >
+                {t === "INFORMATION" ? "INFORMATION COMPLÉMENTAIRES" : t}
+              </button>
+            ))}
           </div>
 
           <div className="tab-content">
@@ -109,36 +112,38 @@ export default function details() {
                 <p>{artifact?.description || "ARTIFACT DESCRIPTION"}</p>
               </div>
             )}
+
             {activeTab === "INFORMATION" && (
               <div className="information-content">
-                <h3>ARTIFACT INFORMATIONS</h3>
-                <p>{artifact?.information || ""}</p>
+                <p>{artifact?.information || "-"}</p>
               </div>
             )}
+
             {activeTab === "DESIGN" && (
               <div className="design-content">
-                <h3>ARTIFACT DESIGN</h3>
-                <p>{artifact?.design || ""}</p> {/* data bind */}
+                <p>{artifact?.design || "-"}</p>
               </div>
             )}
           </div>
-        </div>
+        </section>
 
-        {/* Design illustration */}
-        <div className="design-illustration">
-          <img
-            src={artifact?.banner ? getImageUrl(artifact.banner) : undefined}
-            alt="Product design illustration"
-          />
-        </div>
-        <div className="final-description">
+        <section className="design-illustration card">
+          {artifact?.banner ? (
+            <img src={getImageUrl(artifact.banner)} alt="Product design illustration" />
+          ) : (
+            <div className="image-fallback">No banner</div>
+          )}
+        </section>
+
+        <section className="final-description card">
           <h2>
-            <strong>{artifact?.title} </strong> {artifact?.avis}
+            <strong>{artifact?.title ?? "Title"}</strong> {artifact?.avis}
           </h2>
-        </div>
-      </div>
+        </section>
+      </main>
 
       <Footer />
     </div>
   );
 }
+
